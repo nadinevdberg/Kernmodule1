@@ -1,0 +1,46 @@
+3DprimitivesExample
+bewegingen en vervormingen van de vormen zijn heel gaaf
+toggle naar fullscreen kan handig zijn
+
+
+advanced 3D example
+vormen en kleuren zijn wel geinig maar verder niet heel bijzonder
+gesplit screen kan handig zijn
+ Code die ik voor bounce kan gebruiken:
+
+in .ccp:
+ofBackground(70, 70, 70);
+
+
+camera lens offset example
+first impression: super trippy
+gezichtsdetectie, beweging hieraan gekoppeld
+wordt gewerkt met een camera die bepaalde golfen tekend aan de hand van mijn beweigngen
+oneindig lange regenboog tunnel
+valt op dat meerdere codes '' enable smoothing '' bevatten
+
+3DModelLoaderExample
+- ontzettend traag met laden op mijn laptop
+- rare eekhoorn
+- Zie er voor mij het nut nog niet direct van in en ben dan ook niet geïnteresseerd in de code
+
+
+KinectExample
+- error: het programma kan niet worden gestart omdat libusb0.dll ontbreekt op uw computer
+
+
+FirmataExample
+- Arduino nodig. Laat een schema zien waar ik wat mee kan, zo lijkt het. 
+- In de code staat dat ik met mijn keyboard mijn arduino zou moeten kunnen bestuderen. zeker leuk om een keer te proberen!
+ook staat er dat er een LED gaat branden zodra je klikt!
+
+serialExample
+- ik begrijp niet helemaal wat deze doet. Er wordt wel gesproken over een arduino, maar ook 'serial device'. Ik weet nog niet 
+of dit voor een nuttig voorbeeld is of niet...
+
+simpleTimer
+- Super handig! Een load-bar. Zie je overal. 
+- breedte 'barwidth' op 800 gezet ipv 500
+- Timer reached tekst aangepast
+- Kleur van de balk aangepast (ifSetHexColor(0xff5a36)
+- Uiteindelijk liep mijn pc vast... Bedankt, visual studio!
