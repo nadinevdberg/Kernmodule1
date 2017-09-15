@@ -1,5 +1,4 @@
-﻿  main.cpp
-  ofApp.cpp
+﻿  LINK : bin\oefening1_bounce_debug.exe not found or not built by the last incremental link; performing full link
      Creating library bin\oefening1_bounce_debug.lib and object bin\oefening1_bounce_debug.exp
   oefening1_bounce.vcxproj -> D:\School\OpenFrameworks\apps\Kernmodule1\oefening1_bounce\bin\oefening1_bounce_debug.exe
   oefening1_bounce.vcxproj -> bin\oefening1_bounce_debug.pdb (Full PDB)
