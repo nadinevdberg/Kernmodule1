@@ -1,12 +1,13 @@
 #pragma once
 #include "ofMain.h"
 
+
 class Ball
 {
 public:
 	Ball();
 	~Ball();
-	void setup();
+	void setup(int, float, float);
 	void update();
 	void draw();
 
@@ -16,6 +17,7 @@ public:
 	float speedY;
 	int radius;
 	ofColor color;
+
 
 };
 

@@ -9,15 +9,15 @@ Ball::~Ball()
 {
 }
 
-void Ball::setup()
+void Ball::setup(int radiusSetting, float speedXSetting, float speedYSetting)
 {
 	x = ofRandom(0, ofGetWidth()); //willekeurige positie
 	y -= ofRandom(0, ofGetHeight()); 
 
-	speedX = ofRandom(-5, 5); // willekeurige snelheid
-	speedY = ofRandom(-5, 5);
+	speedX = speedXSetting;
+	speedY = speedYSetting;
 
-	radius = 10;
+	radius = radiusSetting;
 
 	color.set(ofRandom(255), ofRandom(255), ofRandom(255)); // willekeurige RGB waardes == willekeurige kleur
 }

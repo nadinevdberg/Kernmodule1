@@ -1,8 +1,8 @@
 #pragma once
-
 #include "ofMain.h"
 #include "Ball.h"
-#define MAXBALLS 50
+#include <vector>
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -14,6 +14,11 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		void mousePressed(int x, int y, int button);
 
-		Ball ball[MAXBALLS];
+		std::vector<Ball>balls; //balls heeft meerdere Ball. dit is dus een lijst met ballen die ik later ga toepassen wanneer ik klik
 		
+		ofxPanel gui;
+		ofParameter<int> radius;
+		ofParameter<float>speedX;
+		ofParameter<float>speedY;
+		//ofParameter<ofColor>color;
 };
