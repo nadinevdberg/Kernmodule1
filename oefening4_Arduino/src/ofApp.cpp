@@ -15,7 +15,8 @@ void ofApp::setup(){
 
 
 void ofApp::update(){
-
+	//communiceert met arduino en zorgt dat er ook daadwerkelijk gecheckt wordt of er iets veranderd is in de arduino
+	arduino.update();
 }
 
 
@@ -25,13 +26,14 @@ void ofApp::draw(){
 
 
 void ofApp::keyPressed(int key){
+	arduino.sendDigital(11, ARD_HIGH);
 
 }
 
 
 void ofApp::keyReleased(int key){
-
-}
+	arduino.sendDigital(11, ARD_LOW);
+} 
 
 void ofApp::setupArduino(const int& version) {
 	//stap 3
@@ -59,9 +61,11 @@ void ofApp::setupArduino(const int& version) {
 }
 
 void ofApp::analogPinChanged(const int& pin) {
+	//waardes uitlezen
+	ofLog() << "Analog pin" << pin << "value: " << arduino.getAnalog(pin) << endl;
 
 }
 
 void ofApp::digitalPinChanged(const int& pin) {
-
+	ofLog() << "Digital pin" << pin << "value: " << arduino.getDigital(pin) << endl;
 }
