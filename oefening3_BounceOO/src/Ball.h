@@ -7,7 +7,7 @@ class Ball
 public:
 	Ball();
 	~Ball();
-	void setup(int, float, float);
+	void setup(int, float, float); //vraagt om 3 waardes die ik met de GUI ga geven
 	void update();
 	void draw();
 

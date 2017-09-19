@@ -14,10 +14,9 @@ void Ball::setup(int radiusSetting, float speedXSetting, float speedYSetting)
 	x = ofRandom(0, ofGetWidth()); //willekeurige positie
 	y -= ofRandom(0, ofGetHeight()); 
 
-	speedX = speedXSetting;
-	speedY = speedYSetting;
-
-	radius = radiusSetting;
+	speedX = speedXSetting;			//wordt bepaald met de GUI
+	speedY = speedYSetting;			//wordt bepaald met de GUI
+	radius = radiusSetting;			//wordt bepaald met de GUI
 
 	color.set(ofRandom(255), ofRandom(255), ofRandom(255)); // willekeurige RGB waardes == willekeurige kleur
 }
