@@ -85,15 +85,17 @@ void ofApp::analogPinChanged(const int& pinNum) {
 	// als de nieuwe waarde hoger is dan de vorige waarde: groei
 	// als de nieuwe waarde lager is dan de vorige waarde: krimp
 
+	// gebruik de waarde van analog pin1 (potmeter)
 	int potRadius = (arduino.getAnalog(1));
-	ofLogNotice() << "potRadius = " << potRadius << endl;
-	int maxRadius = 100;
-	int minRadius = 5;
-	//ballRadius = 
+	
+
+	float maxRadius = 100;
+	float minRadius = 5;
+	ballRadius = (maxRadius / 1023)* potRadius;
 
 
 	if (arduino.getAnalog(1)) {
-
+				
 	}
 	
 	// waarde met arduino.getAnalog(pinNum));
