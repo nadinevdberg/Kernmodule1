@@ -66,10 +66,12 @@ void ofApp::digitalPinChanged(const int& pinNum) {
 
 	if (arduino.getDigital(12)) {
 		Ball myBall;
-		myBall.setup(10, 0.5, 1);
+		myBall.setup((int)round(ballRadius), 0.5, 1);
 		balls.push_back(myBall);
 
-		ofLog() << "Ik doe iets!" << endl;
+
+		ofLog() << "mijn radius  = "<< myBall.radius << endl;
+		ofLog() << "ballRadius = " << round (ballRadius) << endl;
 	}
 	else {
 		ofLog() << "ik doe niks!" << endl;
@@ -79,11 +81,6 @@ void ofApp::digitalPinChanged(const int& pinNum) {
 }
 
 void ofApp::analogPinChanged(const int& pinNum) {
-	
-	// als de waarde van de potmeter omhoog gaat, moet de radius ook omhoog
-	// als de waarde van de potmeter omlaag gaat, moet de radius ook omlaag 
-	// als de nieuwe waarde hoger is dan de vorige waarde: groei
-	// als de nieuwe waarde lager is dan de vorige waarde: krimp
 
 	// gebruik de waarde van analog pin1 (potmeter)
 	int potRadius = (arduino.getAnalog(1));
@@ -91,16 +88,13 @@ void ofApp::analogPinChanged(const int& pinNum) {
 
 	float maxRadius = 100;
 	float minRadius = 5;
+
+	//maximale radius delen door de maximale waarde van de potmeter, vermenigvuldigen met potradius
 	ballRadius = (maxRadius / 1023)* potRadius;
-
-
-	if (arduino.getAnalog(1)) {
-				
+	if (ballRadius <= minRadius) {
+		ballRadius = minRadius;
 	}
-	
-	// waarde met arduino.getAnalog(pinNum));
 
-	ofLogNotice() << "Analog Pin " << pinNum << "value: " << arduino.getAnalog(pinNum) << endl;
 
 }
 
