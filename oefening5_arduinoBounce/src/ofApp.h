@@ -16,6 +16,8 @@ class ofApp : public ofBaseApp{
 		void draw();
 		
 		vector<Ball>balls;
+
+
 private:
 
 	//arduino communicatie class

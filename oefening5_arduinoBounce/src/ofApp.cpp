@@ -24,7 +24,7 @@ void ofApp::update(){
 
 
 	// Update list voor de ball
-	for (int i = 0; balls.size(); i++) 
+	for (int i = 0;i < balls.size(); i++) 
 	{
 		balls[i].update();
 	}
@@ -79,6 +79,23 @@ void ofApp::digitalPinChanged(const int& pinNum) {
 }
 
 void ofApp::analogPinChanged(const int& pinNum) {
+	
+	// als de waarde van de potmeter omhoog gaat, moet de radius ook omhoog
+	// als de waarde van de potmeter omlaag gaat, moet de radius ook omlaag 
+	// als de nieuwe waarde hoger is dan de vorige waarde: groei
+	// als de nieuwe waarde lager is dan de vorige waarde: krimp
+
+	int potRadius = (arduino.getAnalog(1));
+	ofLogNotice() << "potRadius = " << potRadius << endl;
+	int maxRadius = 100;
+	int minRadius = 5;
+	//ballRadius = 
+
+
+	if (arduino.getAnalog(1)) {
+
+	}
+	
 	// waarde met arduino.getAnalog(pinNum));
 
 	ofLogNotice() << "Analog Pin " << pinNum << "value: " << arduino.getAnalog(pinNum) << endl;
