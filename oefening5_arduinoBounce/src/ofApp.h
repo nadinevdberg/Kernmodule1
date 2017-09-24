@@ -11,12 +11,13 @@ using namespace std;
 class ofApp : public ofBaseApp{
 
 	public:
+
 		void setup();
 		void update();
 		void draw();
 		
 		vector<Ball>balls;
-
+		float ballRadius = 5;
 
 private:
 
