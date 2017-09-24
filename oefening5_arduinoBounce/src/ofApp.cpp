@@ -23,7 +23,7 @@ void ofApp::update(){
 	arduino.update();
 
 
-	// Update list
+	// Update list voor de ball
 	for (int i = 0; balls.size(); i++) 
 	{
 		balls[i].update();
@@ -65,20 +65,23 @@ void ofApp::digitalPinChanged(const int& pinNum) {
 	// waarde met arduino.getDigital(pinNum));
 
 	if (arduino.getDigital(12)) {
+		Ball myBall;
+		myBall.setup(10, 0.5, 1);
+		balls.push_back(myBall);
+
 		ofLog() << "Ik doe iets!" << endl;
 	}
 	else {
 		ofLog() << "ik doe niks!" << endl;
 	}
 
-//	arduino.getDigital(11);
-//	ofLogNotice() << "Digital Pin " << pinNum << "value: " << arduino.getDigital(pinNum) << endl;
+
 }
 
 void ofApp::analogPinChanged(const int& pinNum) {
 	// waarde met arduino.getAnalog(pinNum));
-//	arduino.getAnalog(1);
-//	ofLogNotice() << "Analog Pin " << pinNum << "value: " << arduino.getAnalog(pinNum) << endl;
+
+	ofLogNotice() << "Analog Pin " << pinNum << "value: " << arduino.getAnalog(pinNum) << endl;
 
 }
 
@@ -86,4 +89,7 @@ void ofApp::analogPinChanged(const int& pinNum) {
 Ball myBall;
 myBall.setup(10, 2, 3);
 balls.push_back(myBall);
+
+ofLogNotice() << "Digital Pin " << pinNum << "value: " << arduino.getDigital(pinNum) << endl;
+
 */

@@ -9,20 +9,22 @@ Ball::~Ball()
 {
 }
 
-void Ball::setup(int radius, float speedX, float speedY)
+void Ball::setup(int radiusSetting, float speedXSetting, float speedYSetting)
 {
-	x = ofRandom(0, ofGetWidth()); //willekeurige positie
+	x = ofRandom(0, ofGetWidth()); //willekeurige startpositie
 	y -= ofRandom(0, ofGetHeight()); 
 
-	speedX = ofRandom(-2, 2);
-	speedY = ofRandom(-2, 2);
-	radius = 10;
+	speedX = speedXSetting;
+	speedY = speedYSetting;
+	radius = radiusSetting;
 
 	color.set(ofRandom(255), ofRandom(255), ofRandom(255)); // willekeurige RGB waardes == willekeurige kleur
 }
 
 void Ball::update()
 {
+
+	//als de bal de rand raakt, moet hij omkeren
 	if (x < 0) {
 		x = 0;
 		speedX = -speedX;
@@ -42,7 +44,8 @@ void Ball::update()
 		y = ofGetHeight();
 		speedY = -speedY;
 	}
-
+	
+	//hiermee wordt de snelheid van de bal ook echt aangepast - dus omgekeerd
 	x += speedX;
 	y += speedY;
 }
