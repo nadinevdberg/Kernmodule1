@@ -17,6 +17,11 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
+
+
+	//ofRotateZ(1);
+	//ofRotateY(1);
+
 	rotateX = rotateX + 0.5;
 	rotateY = rotateY + 0.2;
 	rotateZ = rotateZ + 0.2;
@@ -24,17 +29,25 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	gui.draw();
 
-	
+	gui.draw();
+	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2, 0);
+
 
 	ofEnableDepthTest();
 
-	cam.begin();
+	if (rotate) {
+		ofRotateX(rotateX);
+
+	}
+	//cam.begin();
 	// Planeet 1
+
+
 	ofSetColor(ofColor::goldenRod);
 	ofNoFill();
 	ofDrawSphere(0, 0, 0, 50);
+
 
 	// Planeet 2
 	ofSetColor(ofColor::darkGreen);
@@ -46,18 +59,9 @@ void ofApp::draw() {
 	ofNoFill();
 	ofDrawSphere(200, 0, 0, 20);
 
-	/*
-		ofSetColor(ofColor::lightSeaGreen);
-		ofNoFill();
-		ofDrawSphere(0, 100, 0, 20);*/
-
 	if (drawGrid) ofDrawGrid(80);
 
-	if (rotate) {
-		ofRotateX(rotateX);
-		ofRotateY(rotateY);
-		ofRotateZ(rotateZ);
-	}
+
 
 	if (useLight) {
 		ofEnableLighting();
@@ -65,7 +69,7 @@ void ofApp::draw() {
 	else {
 		ofDisableLighting();
 	}
-	cam.end();
+	//cam.end();
 	ofDisableDepthTest();
 }
 

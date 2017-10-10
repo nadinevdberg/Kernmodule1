@@ -20,7 +20,7 @@ public:
 	ofLight light;
 
 	//translate origing naar het midden en flipt assenstelsel
-	ofEasyCam cam;
+//	ofEasyCam cam;
 
 
 private:
