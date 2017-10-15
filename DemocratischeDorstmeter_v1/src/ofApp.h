@@ -2,13 +2,15 @@
 
 #include "ofMain.h"
 
+void timerCallBack(int status);
+
 class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
 		void update();
 		void draw();
-		//void timerCallBack(int status);
+		
 private:
 	ofArduino arduino;
 	void setupArduino(const int& version);

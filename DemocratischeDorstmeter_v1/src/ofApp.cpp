@@ -1,13 +1,9 @@
 #include "ofApp.h"
 #define PIN_BUTTON1 12
-#define PIN_BUTTON2 9
+#define PIN_BUTTON2 10
 #include <glut.h>
 
-void timerCallBack(int status)
-{
 
-	ofLog() << "huidige callback status: " << status << endl;
-}
 
 void ofApp::setup() {
 
@@ -24,7 +20,7 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	
+
 }
 
 
@@ -37,57 +33,56 @@ void ofApp::setupArduino(const int & version)
 	//print firmware details
 	ofLog() << "Arduino firmware found " << arduino.getFirmwareName() << arduino.getMajorFirmwareVersion() << arduino.getMinorFirmwareVersion() << endl;
 
-	arduino.sendDigitalPinMode(11, ARD_OUTPUT);		//Digitaal output    dit was het lampje in voorbeeld code
+	arduino.sendDigitalPinMode(9, ARD_INPUT);		//Digitaal input
 	arduino.sendDigitalPinMode(12, ARD_INPUT);		//digitaal input
-	arduino.sendAnalogPinReporting(0, ARD_ANALOG); //analoog uitlezen
+
 
 	//functies die aangeroepen worden op het moment dat oF door heeft dat er een waarde veranderd is
-	ofAddListener(arduino.EAnalogPinChanged, this, &ofApp::analogPinChanged);
 	ofAddListener(arduino.EDigitalPinChanged, this, &ofApp::digitalPinChanged);
 }
 
-void ofApp::analogPinChanged(const int & pin)
-{
 
-
-	// 	ofLog() << "Analog pin" << pin << "value: " << arduino.getAnalog(pin) << endl;
-}
 
 void ofApp::digitalPinChanged(const int & pin)
+ 	
 {
+	ofLog() << "Digital pin" << pin << "value: " << arduino.getAnalog(pin) << endl;
 	if (arduino.getDigital(12)) {
-		ofLog() << "Boolean button 1 status: " << b1Pressed << endl;
+		ofLog() << "Boolean Dorst button status: " << b1Pressed << endl;
 		if (b1Pressed) {
 			glutTimerFunc(3000, timerCallBack, 1);
 			b1Pressed = false;
-		
-			
-			
 		}
 
 		if (studentenMetDorst < studenten) {
 			studentenMetDorst = studentenMetDorst + 1;
 			ofLog() << "Op dit moment hebben " << studentenMetDorst << " studenten dorst" << endl;
-
 		}
+
 		if (studentenMetDorst == 10) {
 			ofLog() << "Alle studenten hebben dorst. Tijd voor pauze!" << endl;
 		}
 
 	}
 
-	/*	if (arduino.getDigital(9)) {
+	if (arduino.getDigital(10)) {
 
-			if (studentenMetDorst < studenten / 2) {
-				ofLog() << "Minder dan de helft van alle studenten heeft dorst. De pauze zal moeten wachten" << endl;
-			}
-			if (studentenMetDorst >= studenten / 2) {
-				ofLog() << "De pauze is geactiveerd!" << endl;
-				studentenMetDorst = 0;
-			}
+		if (studentenMetDorst < studenten / 2) {
+			ofLog() << "Minder dan de helft van alle studenten heeft dorst. De pauze zal moeten wachten" << endl;
 		}
-		*/
+		if (studentenMetDorst >= studenten / 2) {
+			ofLog() << "De pauze is geactiveerd!" << endl;
+			studentenMetDorst = 0;
+		}
+	}
+
+
+
 }
 
 
-
+void timerCallBack(int status)
+{
+	ofLog() << "TIMERCALLBACK WORDT AANGEROEPEN! " << endl;
+	ofLog() << "huidige callback status: " << status << endl;
+}
