@@ -3,13 +3,18 @@
 #define PIN_BUTTON2 9
 #include <glut.h>
 
-//--------------------------------------------------------------
+void timerCallBack(int status)
+{
+
+	ofLog() << "huidige callback status: " << status << endl;
+}
+
 void ofApp::setup() {
 
 	ofAddListener(arduino.EInitialized, this, &ofApp::setupArduino);		//Luister naar opstartsignaal van de Arduino
 	arduino.connect("COM3"); //maak verbinding met de arduino die aan deze poort verbonden zit
 	arduino.sendFirmwareVersionRequest();
-	ofLog() << "Boolean button 1 status: " << b1Pressed << endl;
+	ofLog() << "Boolean button 1 SETUP status: " << b1Pressed << endl;
 }
 
 //--------------------------------------------------------------
@@ -21,6 +26,8 @@ void ofApp::update() {
 void ofApp::draw() {
 	
 }
+
+
 
 void ofApp::setupArduino(const int & version)
 {
@@ -49,11 +56,13 @@ void ofApp::analogPinChanged(const int & pin)
 void ofApp::digitalPinChanged(const int & pin)
 {
 	if (arduino.getDigital(12)) {
-
+		ofLog() << "Boolean button 1 status: " << b1Pressed << endl;
 		if (b1Pressed) {
-			b1Pressed = false;
-			ofLog() << "Boolean button 1 status: " << b1Pressed << endl;
 			glutTimerFunc(3000, timerCallBack, 1);
+			b1Pressed = false;
+		
+			
+			
 		}
 
 		if (studentenMetDorst < studenten) {
@@ -62,7 +71,7 @@ void ofApp::digitalPinChanged(const int & pin)
 
 		}
 		if (studentenMetDorst == 10) {
-			ofLog() << "Alle studenten hebben dorst! Tijd voor pauze?" << endl;
+			ofLog() << "Alle studenten hebben dorst. Tijd voor pauze!" << endl;
 		}
 
 	}
@@ -80,8 +89,5 @@ void ofApp::digitalPinChanged(const int & pin)
 		*/
 }
 
-void ofApp::timerCallBack(int status)
-{
 
-}
 

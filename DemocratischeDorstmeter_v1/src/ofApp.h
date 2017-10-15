@@ -8,7 +8,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-
+		//void timerCallBack(int status);
 private:
 	ofArduino arduino;
 	void setupArduino(const int& version);
@@ -18,5 +18,5 @@ private:
 	int studenten = 10;
 
 	bool b1Pressed = true;
-	void timerCallBack(int status);
+	
 };
