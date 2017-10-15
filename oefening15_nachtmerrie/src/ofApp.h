@@ -19,4 +19,6 @@ class ofApp : public ofBaseApp{
 		ofBoxPrimitive box1;
 		ofConePrimitive cone1;
 		ofPlanePrimitive plane1;
+		
+	
 };

@@ -19,6 +19,7 @@ void ofApp::setup(){
 
 	//light.setDirectional();
 	//light.enable();
+
 }
 
 //--------------------------------------------------------------
