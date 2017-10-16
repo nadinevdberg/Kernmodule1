@@ -20,18 +20,20 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-
+	ofBackground(ofColor::black);
 }
 
 
 
 void ofApp::setupArduino(const int & version)
 {
-	//verwijder listener
-	ofRemoveListener(arduino.EInitialized, this, &ofApp::setupArduino);
+
 
 	//print firmware details
 	ofLog() << "Arduino firmware found " << arduino.getFirmwareName() << arduino.getMajorFirmwareVersion() << arduino.getMinorFirmwareVersion() << endl;
+	
+	//verwijder listener
+	ofRemoveListener(arduino.EInitialized, this, &ofApp::setupArduino);
 
 	arduino.sendDigitalPinMode(PIN_BUTTON1, ARD_INPUT);		//Digitaal input
 	arduino.sendDigitalPinMode(PIN_BUTTON2, ARD_INPUT);		//digitaal input
@@ -43,10 +45,10 @@ void ofApp::setupArduino(const int & version)
 
 
 
-void ofApp::digitalPinChanged(const int & pin)
+void ofApp::digitalPinChanged(const int& pin)
  	{
 	int value = arduino.getDigital(pin);
-	ofLogVerbose() << "Digital Pin" << pin << " changed to " << value << endl;
+	ofLog() << "Digital Pin" << pin << " changed to " << value << endl;
 
 	
 	if (pin == PIN_BUTTON1 && value == 1) {

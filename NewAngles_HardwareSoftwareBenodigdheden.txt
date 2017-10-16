@@ -1,0 +1,24 @@
+New Angles
+
+# Benodigde hardware
+- heel veel piramidevormen van mat glas met daarin ledjes die verschillende kleuren kunnen tonen
+- Stroom
+- een apparaat dat voor de aansturing zorgt. Laten we van een arduino uitgaan
+- camera
+
+
+
+
+# Stappenplan software
+
+- setup waarin alles aangezet wordt en standaardwaardes zoals kleurwaarde en booleans voor licht aan/uit
+- Functie die ligt van driehoek naar driehoek 'verplaatst' (booleans die 1 voor 1 aan/uit gaan?) en zodra
+ze een lamp 'raken' die al aan is, zelf ook aan blijven staan
+- functie die camerabeeld op lampjes 'projecteerd' waarbij lampjes een soort mesh zijn
+- functie die kijkt of er beweging/iemand in beeld is
+	als iemand in beeld is, dan lichte kleur waardes op die plek 
+	als niemand in beeld is, dan donkere kleurwaardes of lampjes uit
+- Er moet ook iets in de code zitten die de felheid van de lampjes bepaald oftewel een dimfunctie
+- Er moet iets in de code zitten die de kleur langzaam laat verlopen van de ene in de andere (roze naar groen naar blauw, etc)
+- 
+
