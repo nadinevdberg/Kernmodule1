@@ -11,16 +11,35 @@ void ofApp::setup() {
 	arduino.connect("COM3"); //maak verbinding met de arduino die aan deze poort verbonden zit
 	arduino.sendFirmwareVersionRequest();
 	ofLog() << "Boolean button 1 SETUP status: " << b1Pressed << endl;
+
+	audio.load(ofToDataPath("Holy.wav"));
+	audio.play();
+	audio.setPaused(true);
+	ofSoundSetVolume(0.2);
+
+	ofTrueTypeFont::setGlobalDpi(72);
+	myFont.load("Neuzeit Grotesk Regular.ttf", 50);
+
+	begroeting = "Hallo Joyce!";
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
+	ofSoundUpdate();
 	arduino.update(); //is er iets veranderd in de arduino?
+	smd = ofToString(studentenMetDorst);
+	procent =  (studentenMetDorst / 100) * 10;
+	percentage = ofToString(procent);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 	ofBackground(ofColor::black);
+	ofSetColor(255, 128, 0);
+	myFont.drawString(begroeting, 100, 100);
+	myFont.drawString("Aantal studenten met dorst: "+ smd, 100, 200);
+	myFont.drawString(percentage + "%", 100, 300);
 }
 
 
@@ -60,6 +79,7 @@ void ofApp::digitalPinChanged(const int& pin)
 		if (studentenMetDorst < studenten) {
 			studentenMetDorst = studentenMetDorst + 1;
 			ofLog() << "Op dit moment hebben " << studentenMetDorst << " studenten dorst" << endl;
+			
 		}
 
 
@@ -77,6 +97,8 @@ void ofApp::digitalPinChanged(const int& pin)
 		if (studentenMetDorst >= studenten / 2) {
 			ofLog() << "De pauze is geactiveerd!" << endl;
 			studentenMetDorst = 0;
+
+			audio.setPaused(false);
 		}
 	}
 

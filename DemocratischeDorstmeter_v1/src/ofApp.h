@@ -15,8 +15,16 @@ private:
 	void setupArduino(const int& version);
 	void digitalPinChanged(const int & pin);
 	int studentenMetDorst =0;
-	int studenten = 25;
+	int studenten =10;
 
 	bool b1Pressed = true;
-	
+	ofSoundPlayer audio;
+
+	ofTrueTypeFont myFont;
+	string smd;
+	string percentage;
+	string begroeting;
+
+	float procent;
 };
+	
