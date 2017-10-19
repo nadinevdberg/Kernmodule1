@@ -1,7 +1,7 @@
 #include "ofApp.h"
 #define PIN_BUTTON1 12
 #define PIN_BUTTON2 9
-#include <glut.h>
+
 
 
 
@@ -48,13 +48,12 @@ void ofApp::setupArduino(const int & version)
 void ofApp::digitalPinChanged(const int& pin)
  	{
 	int value = arduino.getDigital(pin);
-	ofLog() << "Digital Pin" << pin << " changed to " << value << endl;
+//	ofLog() << "Digital Pin" << pin << " changed to " << value << endl;
 
 	
 	if (pin == PIN_BUTTON1 && value == 1) {
-		ofLog() << "Boolean Dorst button status: " << b1Pressed << endl;
+		//ofLog() << "Boolean Dorst button status: " << b1Pressed << endl;
 		if (b1Pressed) {
-			glutTimerFunc(3000, timerCallBack, 1);
 			b1Pressed = false;
 		}
 
@@ -63,8 +62,9 @@ void ofApp::digitalPinChanged(const int& pin)
 			ofLog() << "Op dit moment hebben " << studentenMetDorst << " studenten dorst" << endl;
 		}
 
-		if (studentenMetDorst == 10) {
-			ofLog() << "Alle studenten hebben dorst. Tijd voor pauze!" << endl;
+
+		if (studentenMetDorst == studenten) {
+			ofLog() << "Alle studenten hebben dorst. Activeer pauze a.u.b!" << endl;
 		}
 
 	}
@@ -84,9 +84,3 @@ void ofApp::digitalPinChanged(const int& pin)
 
 }
 
-
-void timerCallBack(int status)
-{
-	ofLog() << "TIMERCALLBACK WORDT AANGEROEPEN! " << endl;
-	ofLog() << "huidige callback status: " << status << endl;
-}
