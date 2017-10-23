@@ -18,28 +18,48 @@ void ofApp::setup() {
 	ofSoundSetVolume(0.2);
 
 	ofTrueTypeFont::setGlobalDpi(72);
-	myFont.load("Neuzeit Grotesk Regular.ttf", 50);
+	myFont50.load("Oswald-Regular.ttf", 50);
+	myFont30.load("Oswald-Regular.ttf", 30);
 
 	begroeting = "Hallo Joyce!";
-	
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
 	ofSoundUpdate();
 	arduino.update(); //is er iets veranderd in de arduino?
-	smd = ofToString(studentenMetDorst);
-	procent =  (studentenMetDorst / 100) * 10;
+
+	procent = (studentenMetDorst / studenten) * 100.0f;
 	percentage = ofToString(procent);
+
+	if (studentenMetDorst > studenten / 2) {
+		dorst = true;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 	ofBackground(ofColor::black);
 	ofSetColor(255, 128, 0);
-	myFont.drawString(begroeting, 100, 100);
-	myFont.drawString("Aantal studenten met dorst: "+ smd, 100, 200);
-	myFont.drawString(percentage + "%", 100, 300);
+	myFont50.drawString(begroeting, 500, 300);
+
+	if (!pauze) {
+		if (studentenMetDorst < studenten) {
+			myFont30.drawString("Op dit moment heeft " + percentage + "% van alle studenten dorst", 500, 350);
+		}
+		if (studentenMetDorst == studenten) {
+			myFont30.drawString("Alle studenten hebben dorst! Activeer de pauze a.u.b!", 500,350);
+		}
+		if (dorst){
+			myFont30.drawString("Meer dan de helft van de studenten heeft dorst. De pauze kan geactiveerd worden", 500, 400);
+		}
+	}
+	if (pauze) {
+		myFont30.drawString("Pauze is geactiveerd. Haal snel je drankje uit de koelbox!", 500, 350);
+
+	}
+
 }
 
 
@@ -50,7 +70,7 @@ void ofApp::setupArduino(const int & version)
 
 	//print firmware details
 	ofLog() << "Arduino firmware found " << arduino.getFirmwareName() << arduino.getMajorFirmwareVersion() << arduino.getMinorFirmwareVersion() << endl;
-	
+
 	//verwijder listener
 	ofRemoveListener(arduino.EInitialized, this, &ofApp::setupArduino);
 
@@ -65,11 +85,11 @@ void ofApp::setupArduino(const int & version)
 
 
 void ofApp::digitalPinChanged(const int& pin)
- 	{
+{
 	int value = arduino.getDigital(pin);
-//	ofLog() << "Digital Pin" << pin << " changed to " << value << endl;
+	//	ofLog() << "Digital Pin" << pin << " changed to " << value << endl;
 
-	
+
 	if (pin == PIN_BUTTON1 && value == 1) {
 		//ofLog() << "Boolean Dorst button status: " << b1Pressed << endl;
 		if (b1Pressed) {
@@ -79,7 +99,7 @@ void ofApp::digitalPinChanged(const int& pin)
 		if (studentenMetDorst < studenten) {
 			studentenMetDorst = studentenMetDorst + 1;
 			ofLog() << "Op dit moment hebben " << studentenMetDorst << " studenten dorst" << endl;
-			
+
 		}
 
 
@@ -91,15 +111,17 @@ void ofApp::digitalPinChanged(const int& pin)
 
 	if (pin == PIN_BUTTON2 && value == 1) {
 
-		if (studentenMetDorst < studenten / 2) {
+		if (studentenMetDorst <= studenten / 2) {
 			ofLog() << "Minder dan de helft van alle studenten heeft dorst. De pauze zal moeten wachten" << endl;
+			
 		}
-		if (studentenMetDorst >= studenten / 2) {
+		if (studentenMetDorst > studenten / 2) {
 			ofLog() << "De pauze is geactiveerd!" << endl;
 			studentenMetDorst = 0;
-
+			pauze = true;
 			audio.setPaused(false);
 		}
+
 	}
 
 
