@@ -1,0 +1,42 @@
+Wat wil ik dat de arduino doet?
+
+Als er op de 'ik heb dorst' button is gedrukt:
++1 studenten met dorst
+visueel zichtbaar op laptop scherm: loadingbar
+
+Als meer dan 50% van de studenten dorst heeft:
+string met 'meer dan de helft van de studenten heeft dorst'
+om te meten of er meer dan 50% dorst heeft, moet er een maximaal aantal aangegeven zijn.
+
+Als er op de pauzeknop wordt gedrukt én meer dan 50% van de studenten heeft dorst:
+speel geluid af
+laat tekst 'pauze' zien
+start timer (van 5:00 minuten aftellen naar 0)
+
+Als timer == 0:
+speel geluid af
+zet op afkoelen (X minuten)
+zet studenten met dorst op 0
+
+
+
+Onderbouwing hardware
+Waarom werk ik met buttons?
+ik heb ervoor gekozen om met buttons te werken, omdat mijn doelgroep technisch niet heel handig is en het indrukken van een button is een handeling die iedereen begrijpt
+Ook kun je het uiterlijk van buttons helemaal designen, wat in het verdere ontwerp mogelijkheden kan bieden
+
+Waarom werk ik met geluid?
+Het is belangrijk voor de gebruiker om feedback te krijgen. Hierbij is geluid iets dat goed werkt. Geluid wekt ook een bepaalde emotie op, afhankelijk van het soort geluid
+
+Waarom werk ik met tekst? (in dit geval op een scherm, in het ideale concept op een kleiner ledscherm)
+Wederom is het belangrijk voor de gebruiker dat hij feedback krijgt. Tekst is een makkelijke en uitgebreide manier om feedback te geven aan de gebruiker aangezien je
+precies kan vertellen wat er gebeurd en/of wat de gebruiker moet doen. 
+
+Waarom werk ik met test-files voor mijn code?
+Om er zeker van te zijn dat bepaalde dingen werken, heb ik meerdere opzetjes gemaakt in proefdocumenten. Op deze manier kon ik snel het een en ander testen, zonder de arduino aan te sluiten.
+
+Waarom heb ik uiteindelijk geen timer verwerkt in mijn concept?
+Het kostte mij te veel tijd en moeite om dit voor elkaar te krijgen. Ik heb er veel tijd in gestopt om te proberen een timer in te zetten, maar helaas kwam ik niet op het juiste resultaat.
+Ik ben er helaas ook nog steeds niet achter waarom het niet werkt. Wel weet ik dat er, wederom, 1000 wegen zijn die naar Rome leiden en ik het op meerdere manieren nog op had kunnen lossen.
+Toch vond ik andere onderdelen, zoals het visualiseren van de strings, belangrijker dan de timer. 
+

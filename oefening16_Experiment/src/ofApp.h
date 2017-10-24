@@ -10,6 +10,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void keyPressed(int key);
 
 		ofBoxPrimitive box;
 		float spinX = 0.005;
@@ -20,6 +21,7 @@ class ofApp : public ofBaseApp{
 
 		vector<float> origZ;
 		ofImage image;
+		bool drawGrabbedImage;
 
 		ofPixels workspace;
 		int randomRmutation;

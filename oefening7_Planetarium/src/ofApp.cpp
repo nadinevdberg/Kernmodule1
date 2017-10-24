@@ -37,7 +37,7 @@ void ofApp::draw() {
 	ofEnableDepthTest();
 
 	if (rotate) {
-		ofRotateX(rotateX);
+		ofRotateY(rotateY);
 
 	}
 	//cam.begin();
